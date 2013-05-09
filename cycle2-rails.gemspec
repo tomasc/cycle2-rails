@@ -14,6 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "cycle2-rails"
   gem.require_paths = ["lib"]
   gem.version       = Cycle2::Rails::VERSION
+
+  gem.add_dependency "jquery-rails", "~> 2.0"
   
   gem.add_development_dependency "rake"
 end
