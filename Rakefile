@@ -5,7 +5,7 @@ require 'open-uri'
 desc "Download the latest cycle2.js"
 task :update do
   url = "http://malsup.github.com/jquery.cycle2.js"
-  outputfile = "vendor/assets/javascripts/cycle2-rails/jquery.cycle2.js"
+  outputfile = "app/assets/javascripts/jquery.cycle2.js"
 
   open(outputfile, 'wb') do |file|
     file << open(url).read
@@ -21,7 +21,7 @@ task :update do
   http://malsup.github.com/jquery.cycle2.swipe.js
   http://malsup.github.com/jquery.cycle2.video.js]
   
-  base_output = "vendor/assets/javascripts/cycle2-rails/"
+  base_output = "app/assets/javascripts/"
   
   plugins.each do |plugin_url|
     plugin_outputfile = File.join(base_output, File.basename(plugin_url))
