@@ -22,7 +22,14 @@ And then execute:
 
 In your application.js
 
-    //= require cycle2-rails
+    //= require jquery.cycle2
+
+Additionaly you can use Cycle2 plugins like this:
+
+    //= require jquery.cycle2.carousel
+    //= require jquery.cycle2.swipe
+
+Note jquery.cycle2 included automatically if you use any plugin.
     
 ## Contributing
 
