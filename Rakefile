@@ -26,6 +26,7 @@ task :update do
   plugins.each do |plugin_url|
     plugin_outputfile = File.join(base_output, File.basename(plugin_url))
     open(plugin_outputfile, 'wb') do |file|
+      file << "//= require jquery.cycle2\n\n"
       file << open(plugin_url).read
     end
   end

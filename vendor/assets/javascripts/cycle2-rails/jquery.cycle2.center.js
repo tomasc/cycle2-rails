@@ -1,3 +1,5 @@
+//= require jquery.cycle2
+
 /*! center plugin for Cycle2;  version: 20130324 */
 (function($) {
 "use strict";

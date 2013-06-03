@@ -1,3 +1,5 @@
+//= require jquery.cycle2
+
 /*! caption2 plugin for Cycle2;  version: 20130306 */
 (function($) {
 "use strict";
