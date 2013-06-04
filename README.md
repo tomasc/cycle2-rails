@@ -22,8 +22,30 @@ And then execute:
 
 In your application.js
 
-    //= require cycle2-rails
-    
+    //= require jquery.cycle2
+
+Additionaly you can use optional Cycle2 plugins like this:
+
+    //= require jquery.cycle2.carousel
+    //= require jquery.cycle2.swipe
+
+Note jquery.cycle2 included automatically if you use any plugin.
+More info about optional plugins on Cycle2 page: http://jquery.malsup.com/cycle2/download/
+
+If you wish use only additional plugins you can include only needed base modules.
+For example:
+
+    //= require jquery.cycle2.autoheight
+    //= require jquery.cycle2.swipe
+
+More info about core plugins: http://jquery.malsup.com/cycle2/download/advanced.php
+
+Also you can include all core modules and additional plugins:
+
+    //= require jquery.cycle2.all
+
+
+
 ## Contributing
 
 1. Fork it
