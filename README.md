@@ -6,13 +6,13 @@ Cycle2 is a versatile slideshow plugin for jQuery built around ease-of-use. It s
 
 Cycle2 was written by Mike Alsup. 
 
-# For Rails 3.1+ only
+# For Rails 3.1+ only (including Rails 4)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'cycle2-rails'
+    gem 'cycle2-rails', git: 'git://github.com/thinkswan/cycle2-rails.git', branch: 'rails4'
 
 And then execute:
 
