@@ -1,6 +1,6 @@
 //= require jquery.cycle2.core
 
-/*! prevnext plugin for Cycle2;  version: 20130307 */
+/*! prevnext plugin for Cycle2;  version: 20130709 */
 (function($) {
 "use strict";
 
@@ -11,7 +11,7 @@ $.extend($.fn.cycle.defaults, {
     prev:           '> .cycle-prev',
     prevEvent:      'click.cycle',
     swipe:          false
-});    
+});
 
 $(document).on( 'cycle-initialized', function( e, opts ) {
     opts.API.getComponent( 'next' ).on( opts.nextEvent, function(e) {
@@ -44,7 +44,7 @@ $(document).on( 'cycle-update-view', function( e, opts, slideOpts, currSlide ) {
     var next = opts.API.getComponent( 'next' );
     var prev = opts.API.getComponent( 'prev' );
     var prevBoundry = opts._prevBoundry || 0;
-    var nextBoundry = opts._nextBoundry || opts.slideCount - 1;
+    var nextBoundry = (opts._nextBoundry !== undefined)?opts._nextBoundry:opts.slideCount - 1;
 
     if ( opts.currSlide == nextBoundry )
         next.addClass( cls ).prop( 'disabled', true );
