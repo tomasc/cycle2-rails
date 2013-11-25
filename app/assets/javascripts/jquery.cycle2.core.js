@@ -1,13 +1,8 @@
-/*!
- * jQuery Cycle2 - Version: 20130502
- * http://malsup.com/jquery/cycle2/
- * Copyright (c) 2012 M. Alsup; Dual licensed: MIT/GPL
- * Requires: jQuery v1.7 or later
- */
+/*! core engine; version: 20131003 */
 ;(function($) {
 "use strict";
 
-var version = '20130409';
+var version = '20131003';
 
 $.fn.cycle = function( options ) {
     // fix mistakes with the ready state
@@ -137,7 +132,7 @@ $.fn.cycle.API = {
 
         // stage initial transition
         if ( opts.timeout ) {
-            slideOpts = opts.API.getSlideOpts( opts.nextSlide );
+            slideOpts = opts.API.getSlideOpts( opts.currSlide );
             opts.API.queueTransition( slideOpts, slideOpts.timeout + opts.delay );
         }
 
@@ -183,9 +178,13 @@ $.fn.cycle.API = {
         else
             opts.paused = false;
 
+    
         if ( ! alreadyResumed ) {
             opts.container.removeClass('cycle-paused');
-            opts.API.queueTransition( opts.API.getSlideOpts(), opts._remainingTimeout );
+            // #gh-230; if an animation is in progress then don't queue a new transition; it will
+            // happen naturally
+            if ( opts.slides.filter(':animated').length === 0 )
+                opts.API.queueTransition( opts.API.getSlideOpts(), opts._remainingTimeout );
             opts.API.trigger('cycle-resumed', [ opts, opts._remainingTimeout ] ).log('cycle-resumed');
         }
     },
@@ -491,14 +490,14 @@ $.fn.cycle.API = {
         slide.addClass( opts.slideClass );
     },
 
-    updateView: function( isAfter ) {
+    updateView: function( isAfter, isDuring ) {
         var opts = this.opts();
         if ( !opts._initialized )
             return;
         var slideOpts = opts.API.getSlideOpts();
         var currSlide = opts.slides[ opts.currSlide ];
 
-        if ( ! isAfter ) {
+        if ( ! isAfter && isDuring !== true ) {
             opts.API.trigger('cycle-update-view-before', [ opts, slideOpts, currSlide ]);
             if ( opts.updateView < 0 )
                 return;
@@ -513,7 +512,9 @@ $.fn.cycle.API = {
             opts.slides.filter( ':not(.' + opts.slideActiveClass + ')' ).hide();
 
         opts.API.trigger('cycle-update-view', [ opts, slideOpts, currSlide, isAfter ]);
-        opts.API.trigger('cycle-update-view-after', [ opts, slideOpts, currSlide ]);
+        
+        if ( isAfter )
+            opts.API.trigger('cycle-update-view-after', [ opts, slideOpts, currSlide ]);
     },
 
     getComponent: function( name ) {

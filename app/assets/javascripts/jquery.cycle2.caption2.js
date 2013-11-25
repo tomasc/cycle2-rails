@@ -1,6 +1,6 @@
 //= require jquery.cycle2
 
-/*! caption2 plugin for Cycle2;  version: 20130306 */
+/*! caption2 plugin for Cycle2;  version: 20130708 */
 (function($) {
 "use strict";
 
@@ -17,6 +17,10 @@ $(document).on( 'cycle-bootstrap', function(e, opts) {
     opts.container.on( 'cycle-update-view-before', update );
     opts.container.one( 'cycle-update-view-after', init );
 });
+
+// $(document).on( 'cycle-destroy', function(e, opts) {
+//     opts.container.off( 'cycle-update-view-before', update );
+// });
 
 function update( e, opts, slideOpts, currSlide, isAfter ) {
     if ( opts.captionPlugin !== 'caption2' )
