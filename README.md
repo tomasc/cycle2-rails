@@ -12,7 +12,7 @@ Cycle2 was written by Mike Alsup.
 
 Add this line to your application's Gemfile:
 
-    gem 'cycle2-rails', git: 'git://github.com/thinkswan/cycle2-rails.git', branch: 'rails4'
+    gem 'cycle2-rails'
 
 And then execute:
 
