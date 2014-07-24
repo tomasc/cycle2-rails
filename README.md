@@ -1,3 +1,7 @@
+# DEPRECATED:
+
+This solution is replaced by [Rails Assets](https://rails-assets.org) and the `rails-assets-jquery-cycle2` gem.
+
 # Cycle2-Rails
 
 Integrates [jquery.cycle2.js](http://jquery.malsup.com/cycle2) with the Rails asset pipeline.
